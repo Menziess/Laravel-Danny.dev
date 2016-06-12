@@ -39,7 +39,7 @@
 				<!-- Register and login buttons visible on homepage -->
 				@if(isset($links))
 					@foreach($links as $link)
-						<li><a href="{{ url('$link[1]') }}">{{ $link[0] }}</a></li>
+						<li><a href="{{ url($link[1]) }}">{{ $link[0] }}</a></li>
 					@endforeach
 				@endif
 			</ul>
