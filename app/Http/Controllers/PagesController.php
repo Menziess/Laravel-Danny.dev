@@ -16,7 +16,7 @@ class PagesController extends Controller
 		if (Auth::guest()) {
 			$links = [
 				['Login', '/login'],
-				['Register', '/Register'],
+				['Register', '/register'],
 			];
 		}
 		return view('welcome', compact('links'));
