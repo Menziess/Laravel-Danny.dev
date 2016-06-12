@@ -11,6 +11,12 @@ class Resource extends Model
 {
 	use SoftDeletes;
 
+	const TYPES = [
+		0 => 'image',
+		1 => 'video',
+		2 => 'audio',
+	];
+
 	/**
 	 * The table associated with the model.
 	 *
@@ -24,7 +30,11 @@ class Resource extends Model
 	 * @var array
 	 */
 	protected $fillable = [
-		//
+		'name',
+		'url',
+		'type',
+		'mime',
+		'extension',
 	];
 
 	/**
@@ -69,6 +79,7 @@ class Resource extends Model
 
 		$this->name = $name;
 		$this->url = self::generateName();
+		$this->type = self::TYPES[0];
 		$this->mime = $file->getClientMimeType();
 		$this->extension = '.' . $file->getClientOriginalExtension();
 		return self::storeImage($image);
@@ -88,6 +99,7 @@ class Resource extends Model
 
 		$this->name = $name;
 		$this->url = self::generateName();
+		$this->type = self::TYPES[0];
 		$this->mime = $image->mime();
 		$this->extension = pathinfo($path, PATHINFO_EXTENSION)
 			?: $this->getExtension($this->original_mime_type);

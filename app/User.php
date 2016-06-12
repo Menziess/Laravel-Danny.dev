@@ -45,6 +45,38 @@ class User extends Authenticatable
     ];
 
     /*
+     * User roles.
+     */
+    public function roles()
+    {
+        return $this->belongsToMany(Role::class);
+    }
+
+    /*
+     * User resources.
+     */
+    public function resources()
+    {
+        return $this->hasMany(Resource::class);
+    }
+
+    public function profilePicture()
+    {
+        return $this->hasMany(Resource::class)
+            ->where('name', 'profile')
+            ->orderBy('id', 'desc')
+            ->first();
+    }
+
+    /*
+     * Get full user name.
+     */
+    public function getName()
+    {
+        return $this->first_name . ' ' . $this->last_name;
+    }
+
+    /*
      * Make slug to access user profile.
      */
     public function makeSlug() {
