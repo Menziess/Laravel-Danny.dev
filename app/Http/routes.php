@@ -11,15 +11,18 @@
 |
 */
 
-Route::get('/', function () {
-	$title = 'Danny is gek';
-    return view('welcome', compact('title'));
-});
-
-Route::get('/test', function () {
-    return 'hoi';
-});
-
+# Login and registration
 Route::auth();
 
-Route::get('/home', 'HomeController@index');
+# Landing page
+Route::get('/', 'PagesController@getIndex');
+
+# Other routes
+Route::group(['middleware' => 'auth'], function () {
+	Route::controller('/users', 'UsersController');
+});
+
+# Public portfolio
+Route::get('/{slug}', 'UsersController@portfolio');
+
+

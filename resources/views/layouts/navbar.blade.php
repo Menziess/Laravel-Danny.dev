@@ -11,32 +11,15 @@
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="{{ url('/') }}">Danny's portfolio</a>
+			<a class="navbar-brand" href="{{ isset($user) ? url('/' . $user->slug) : url('/') }}">{{ isset($user) ? $user->first_name : 'Portfolio' }}</a>
 		</div>
 
 		<!-- Collect the nav links, forms, and other content for toggling -->
 		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 			<!-- Right Side Of Navbar -->
 			<ul class="nav navbar-nav navbar-right">
-				<!-- Authentication Links -->
-				@if (Auth::guest())
-					<li><a href="{{ url('/login') }}">Login</a></li>
-					<li><a href="{{ url('/register') }}">Register</a></li>
-				@else
-					<li class="dropdown">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-							{{ Auth::user()->first_name }} <span class="caret"></span>
-						</a>
-
-						<ul class="dropdown-menu" role="menu">
-							<li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Logout</a></li>
-						</ul>
-					</li>
-				@endif
-			</ul>
-			<!-- Regular links -->
-			<ul class="nav navbar-nav navbar-right">
-				<!-- <li class="hidden">
+				<!-- Regular links -->
+				<li class="hidden">
 					<a href="#page-top"></a>
 				</li>
 				<li class="page-scroll">
@@ -47,7 +30,18 @@
 				</li>
 				<li class="page-scroll">
 					<a href="#contact">Contact</a>
-				</li> -->
+				</li>
+				<!-- Logout button visible when logged in -->
+				@if (Auth::user())
+					<li><a href="{{ url('/logout') }}">Logout</a></li>
+					<li><a href="{{ url('/users') }}">{{ Auth::user()->first_name }}</a></li>
+				@endif
+				<!-- Register and login buttons visible on homepage -->
+				@if(isset($links))
+					@foreach($links as $link)
+						<li><a href="{{ $link[1] }}">{{ $link[0] }}</a></li>
+					@endforeach
+				@endif
 			</ul>
 		</div>
 		<!-- /.navbar-collapse -->
