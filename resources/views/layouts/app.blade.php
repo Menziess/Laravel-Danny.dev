@@ -21,6 +21,8 @@
     <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700">
 
+    <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
+
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -40,7 +42,11 @@
 
     @include('layouts.navbar')
 
+    @include('layouts.header')
+
     @yield('content')
+
+    @include('layouts.footer')
 
     <!-- jQuery -->
     <script src="{{ asset('js/jquery.js') }}"></script>
