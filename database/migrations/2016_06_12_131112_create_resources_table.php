@@ -32,6 +32,7 @@ class CreateResourcesTable extends Migration
                   ->onDelete('set null');
 
             $table->string('name')->nullable();
+            $table->string('url');
             $table->string('type');
             $table->string('mime');
             $table->string('extension');

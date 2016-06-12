@@ -21,6 +21,12 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->text('about')->nullable();
 
+            $table->string('facebook')->nullable();
+            $table->string('google')->nullable();
+            $table->string('twitter')->nullable();
+            $table->string('linkedin')->nullable();
+            $table->string('website')->nullable();
+
             $table->rememberToken();
             $table->softDeletes();
             $table->timestamps();
