@@ -17,8 +17,10 @@ class User extends Authenticatable
     protected $fillable = [
         'first_name',
         'last_name',
+        'slug',
         'email',
         'password',
+        'about',
     ];
 
     /**
@@ -41,4 +43,19 @@ class User extends Authenticatable
         'created_at',
         'deleted_at',
     ];
+
+    /*
+     * Make slug to access user profile.
+     */
+    public function makeSlug() {
+        $slug = strtolower($this->first_name . '-' . $this->last_name);
+        $ext = null;
+        while (self::where('slug', $slug . $ext)->exists()) {
+            if (!$ext) {
+                $ext = '.' . rand(1, 999);
+            }
+        }
+        $this->slug = $slug . $ext;
+        $this->save();
+    }
 }
