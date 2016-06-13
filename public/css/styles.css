@@ -1,3 +1,10 @@
-.spacer {
-	padding-top: 3em;
+
+/* Fixes offset when using responsive iframe */
+.caption {
+	top: 0px;
+}
+
+/* Prevents huge pictures */
+.profile-picture-small {
+	max-width: 256px;
 }

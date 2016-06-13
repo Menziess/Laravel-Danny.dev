@@ -60,12 +60,21 @@ class User extends Authenticatable
         return $this->hasMany(Resource::class);
     }
 
-    public function profilePicture()
+    /*
+     * User videos.
+     */
+    public function videos()
     {
         return $this->hasMany(Resource::class)
-            ->where('name', 'profile')
-            ->orderBy('id', 'desc')
-            ->first();
+            ->where('type', 'video');
+    }
+
+    /*
+     * User profile picture.
+     */
+    public function resource()
+    {
+        return $this->belongsTo(Resource::class);
     }
 
     /*
@@ -74,6 +83,15 @@ class User extends Authenticatable
     public function getName()
     {
         return $this->first_name . ' ' . $this->last_name;
+    }
+
+    /*
+     * Get profile picture.
+     */
+    public function getPicture()
+    {
+        $image = $this->resource ? 'storage/images/' . $this->resource->url . $this->resource->extension : null;
+        return $image;
     }
 
     /*

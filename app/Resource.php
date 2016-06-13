@@ -71,7 +71,7 @@ class Resource extends Model
 	 * @param  integer $height
 	 * @return string  $filepath
 	 */
-	public function uploadImageFile($file, $width = 1000, $height = 1000, $name = null)
+	public function uploadImageFile($file, $width = 256, $height = 256, $name = null)
 	{
 		$image = Image::make($file)->fit($width, $height, function ($constraint) {
             $constraint->aspectRatio();
@@ -93,7 +93,7 @@ class Resource extends Model
 	 * @param  integer $height
 	 * @return string  $filepath
 	 */
-	public function uploadImagePath($path, $width = 1000, $height = 1000, $name = null)
+	public function uploadImagePath($path, $width = 256, $height = 256, $name = null)
 	{
 		$image = Image::make($path)->resize($width, $height);
 
