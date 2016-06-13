@@ -16,10 +16,10 @@ class UsersTableSeeder extends Seeder
 
 		$picture = App\Resource::create([
 			'name'      => 'My profile pic',
-			'url'       => 'https://scontent-ams3-1.xx.fbcdn.net/v/t1.0-9/12743555_1008625845860269_2331931867126981355_n.jpg?oh=3142998976dc4cb26beb62ec0481af82&oe=580C9043',
+			'url'       => 'test',
 			'type'      => 'image',
-			'mime'      => 'jpeg',
-			'extension' => 'jpeg',
+			'mime'      => 'image/png',
+			'extension' => '.png',
 		]);
 
 		$video1 = App\Resource::create([
