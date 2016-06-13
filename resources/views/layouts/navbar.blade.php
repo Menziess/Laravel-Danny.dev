@@ -19,7 +19,7 @@
 			<!-- Right Side Of Navbar -->
 			<ul class="nav navbar-nav navbar-right">
 				<!-- Regular links -->
-				<li class="hidden">
+				<!-- <li class="hidden">
 					<a href="#page-top"></a>
 				</li>
 				<li class="page-scroll">
@@ -30,7 +30,7 @@
 				</li>
 				<li class="page-scroll">
 					<a href="#contact">Contact</a>
-				</li>
+				</li> -->
 				<!-- Logout button visible when logged in -->
 				@if (Auth::user())
 					<li><a href="{{ url('/logout') }}">Logout</a></li>
