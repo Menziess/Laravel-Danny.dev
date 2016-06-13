@@ -44,7 +44,7 @@
 						<h2>{{ $video->name ? $video->name : 'My project' }}</h2>
 						<hr class="star-primary">
 						<div class="embed-responsive embed-responsive-16by9">
-							<iframe class="embed-responsive-item" src="{{ $video->url }}" width="710" height="512" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+							<iframe id="player" class="embed-responsive-item" src="{{ $video->url }}" width="710" height="512" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 						</div>
 						<p>Use this area of the page to describe your project. The icon above is part of a free icon set by <a href="https://sellfy.com/p/8Q9P/jV3VZ/">Flat Icons</a>. On their website, you can download their free set with 16 icons, or you can purchase the entire set with 146 icons for only $12!</p>
 						<ul class="list-inline item-details">
@@ -69,3 +69,24 @@
 	</div>
 </div>
 @endforeach
+
+@push('scripts')
+	<script src="{{ asset('js/jquery.vimeo.api.js') }}"></script>
+	<script type="text/javascript">
+		$(document).ready(function($) {
+		   $("#player").vimeo("play").on("play", function(e){
+						  console.log("play event was triggered");
+					  })
+					  .on("pause", function(e){
+						  console.log("pause event was triggered");
+					  })
+					  .on("playProgress", function(event, data){
+						  console.log(data);
+					  })
+					  .on("finish", function(e){
+						  vid.vimeo("unload");
+						  console.log("Finished event triggere");
+					  });
+		});
+	</script>
+@endpush

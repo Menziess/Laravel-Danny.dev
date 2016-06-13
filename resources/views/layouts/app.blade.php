@@ -67,6 +67,8 @@
     <!-- Custom Theme JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/startbootstrap-freelancer/1.0.5/js/freelancer.min.js"></script>
 
+    <!-- Other scripts -->
     @stack('scripts')
+
 </body>
 </html>
