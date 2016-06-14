@@ -7,6 +7,8 @@
 /* Prevents huge pictures */
 .profile-picture-small {
 	max-width: 256px;
+	border: 10px solid rgba(255, 255, 255, .5);
+	border
 }
 
 /* Disables link */

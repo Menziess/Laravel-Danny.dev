@@ -27,6 +27,12 @@ class CreateUsersTable extends Migration
             $table->string('linkedin')->nullable();
             $table->string('website')->nullable();
 
+            $table->string('street')->nullable();
+            $table->string('number')->nullable();
+            $table->string('zipcode')->nullable();
+            $table->string('city')->nullable();
+            $table->string('country')->nullable();
+
             $table->rememberToken();
             $table->softDeletes();
             $table->timestamps();

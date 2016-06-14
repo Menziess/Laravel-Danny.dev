@@ -28,13 +28,15 @@
 		<div class="row">
 			<div class="footer-col col-md-4">
 			<h3>Location</h3>
-			@if($user->location)
-				<p>3481 Melrose Place<br>Beverly Hills, CA 90210</p>
+			@if($user->country || $user->street)
+				<p>{{ $user->street }} {{ $user->number }}
+				<br />{{ $user->city }}, {{ $user->zipcode }}
+				<br />{{ $user->country }}</p>
 			@else
 				<p>{{ $user->first_name }} hasn't shared a location yet.</p>
 			@endif
 			</div>
-			@if(isset($user))
+			@if(true)
 			<div class="footer-col col-md-4">
 				<h3>Around the Web</h3>
 				<ul class="list-inline">
@@ -62,8 +64,8 @@
 			</div>
 			@endif
 			<div class="footer-col col-md-4">
-				<h3>Join Portfolio</h3>
-				<p>Create your free portfolio: <a href="{{ url('/') }}">Register account</a>.</p>
+				<h3>Contact</h3>
+				<p>Email <a href="{{ url('mailto:' . $user->email) }}">{{ $user->email }}</a></p>
 			</div>
 		</div>
 	</div>

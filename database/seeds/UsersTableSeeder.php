@@ -40,6 +40,14 @@ class UsersTableSeeder extends Seeder
 			'email'			=> 'stefan_schenk@hotmail.com',
 			'password'		=> bcrypt('test123'),
 			'about'			=> $faker->sentence(44),
+			'facebook'		=> 'https://www.facebook.com/stefan.schenk.566',
+			'google'		=> 'https://plus.google.com/+StefanSchenkMenzies',
+
+			'street'		=> 'Flamingolaan',
+			'number'		=> '65',
+			'zipcode'		=> '1619 VC',
+			'city'			=> 'Andijk',
+			'country'		=> 'Netherlands',
 		]);
 
 		$user->resource()->associate($picture)->save();
