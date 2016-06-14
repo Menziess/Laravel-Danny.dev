@@ -67,9 +67,10 @@ class User extends Authenticatable
     /*
      * User resources.
      */
-    public function resources()
+    public function resources($type = null)
     {
-        return $this->hasMany(Resource::class);
+        return $this->hasMany(Resource::class)
+            ->where('type', $type);
     }
 
     /*

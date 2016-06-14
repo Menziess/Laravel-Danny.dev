@@ -36,7 +36,6 @@
 				<p>{{ $user->first_name }} hasn't shared a location yet.</p>
 			@endif
 			</div>
-			@if(true)
 			<div class="footer-col col-md-4">
 				<h3>Around the Web</h3>
 				<ul class="list-inline">
@@ -57,12 +56,6 @@
 					</li>
 				</ul>
 			</div>
-			@else
-			<div class="footer-col col-md-4">
-				<h3>Join Portfolio</h3>
-				<p>Create your free portfolio: <a href="{{ url('/') }}">Register account</a>.</p>
-			</div>
-			@endif
 			<div class="footer-col col-md-4">
 				<h3>Contact</h3>
 				<p>Email <a href="{{ url('mailto:' . $user->email) }}">{{ $user->email }}</a></p>
