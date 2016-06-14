@@ -27,6 +27,7 @@ class UsersTableSeeder extends Seeder
 			'url'       => '//player.vimeo.com/video/166284984',
 			'type'      => 'video',
 		]);
+
 		$video2 = App\Resource::create([
 			'name'      => 'My video',
 			'url'       => '//player.vimeo.com/video/131811521',

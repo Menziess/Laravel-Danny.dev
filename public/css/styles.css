@@ -8,3 +8,8 @@
 .profile-picture-small {
 	max-width: 256px;
 }
+
+/* Disables link */
+a.disabled {
+    pointer-events: none;
+}
