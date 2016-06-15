@@ -102,7 +102,7 @@ class Resource extends Model
 		$this->type = self::TYPES[0];
 		$this->mime = $image->mime();
 		$this->extension = pathinfo($path, PATHINFO_EXTENSION)
-			?: $this->getExtension($this->original_mime_type);
+			?: $this->getExtension($this->mime);
 		return self::storeImage($image);
 	}
 
@@ -114,7 +114,7 @@ class Resource extends Model
 	 */
 	private function storeImage($image)
 	{
-		$filepath = 'public/images/' . $this->original_name . $this->original_extension;
+		$filepath = 'public/images/' . $this->url . $this->extension;
 		$image->interlace();
 		$image->save(storage_path('app/' . $filepath));
 
@@ -129,7 +129,7 @@ class Resource extends Model
 	 */
 	public function removeFromStorage()
 	{
-		$filepath = 'public/images/' . $this->original_name . $this->original_extension;
+		$filepath = 'public/images/' . $this->url . $this->extension;
 		Storage::delete($filepath);
 		$this->delete();
 	}

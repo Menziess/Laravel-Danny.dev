@@ -46,7 +46,7 @@
 			</div>
 			<div class="container">
 				<div class="row">
-					<div class="col-lg-8 col-lg-offset-2">
+					<div class="col-lg-10 col-lg-offset-1">
 						<div class="modal-body">
 							<h2>{{ $video->name ? $video->name : 'My project' }}</h2>
 							<hr class="star-primary">

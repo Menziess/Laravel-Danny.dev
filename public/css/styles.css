@@ -1,3 +1,8 @@
+/* Fixes hopping of navbar while opening modals */
+.navbar {
+    width:100vw;
+    overflow-x:hidden;
+}
 
 /* Fixes offset when using responsive iframe */
 .caption {

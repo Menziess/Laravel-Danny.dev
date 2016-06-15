@@ -55,7 +55,7 @@
 						<div class="form-group col-xs-12">
 								<div class="checkbox">
 									<label>
-										<input type="checkbox" name="remember"> Remember Me
+										<input type="checkbox" name="remember" checked> Remember Me
 									</label>
 								</div>
 							<button type="submit" class="btn btn-success btn-lg">Login</button>
