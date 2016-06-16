@@ -1,15 +1,15 @@
 <!-- Footer -->
 <footer class="text-center">
-	@if(isset($user))
+	@if(Auth::check() && isset($user))
 		@yield('footer')
-	@else
+	@elseif(Auth::guest())
 	<div class="footer-above">
 	<div class="container">
 		<div class="row">
 			<div class="footer-col col-md-4 col-md-offset-4">
 				<h3>Join Portfolio</h3>
 				<p>Create your free portfolio: <br />
-				<a href="{{ url('/') }}">Register account</a>.</p>
+				<a href="{{ url('/register') }}">Register account</a>.</p>
 			</div>
 		</div>
 	</div>

@@ -2,6 +2,9 @@
 
 @section('header')
 	<div class="container">
+
+		@include('pages.partials.background', ['background' => $background])
+
 		<div class="row">
 			<div class="col-lg-12">
 				<div class="intro-text">
