@@ -63,6 +63,22 @@ class Resource extends Model
 		return $this->belongsTo(User::class);
 	}
 
+	# Scope where type is
+	public function scopeWhereType($query, string $type)
+	{
+		return $query->where('type', $type);
+	}
+
+	# Scope where name or description is like
+	public function scopeSearch($query, string $search = null)
+	{
+		if (!$search) {
+            return $query;
+        }
+		return $query->where('name', 'like', '%' . $search . '%')
+			->orWhere('description', 'like', '%' . $search . '%');
+	}
+
 	/**
 	 * Create new image from file.
 	 *

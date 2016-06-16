@@ -11,7 +11,7 @@ class PagesController extends Controller
 	/*
 	 * Show landing page.
 	 */
-	public function getIndex()
+	public function getIndex(Request $request)
 	{
 		if (Auth::guest()) {
 			$links = [
@@ -19,6 +19,12 @@ class PagesController extends Controller
 				['Register', '/register'],
 			];
 		}
-		return view('welcome', compact('links'));
+		if ($request->search) {
+			$videos = \App\Resource::search($request->search)->whereType('video')->take(20)->get();
+			$users 	= \App\User::search($request->search)->take(20)->get();
+			return view('pages.results', compact('links', 'videos', 'users'));
+		}
+		$background	= \App\Resource::whereType('video')->orderByRaw('RAND()')->first();
+		return view('welcome', compact('links', 'background'));
 	}
 }

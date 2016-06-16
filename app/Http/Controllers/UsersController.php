@@ -17,7 +17,8 @@ class UsersController extends Controller
     public function portfolio($slug)
     {
     	$user = User::where('slug', $slug)->firstOrFail();
-    	return view('pages.portfolio', compact('user'));
+        $videos = $user->videos()->take(6)->get();
+    	return view('pages.portfolio', compact('user', 'videos'));
     }
 
     /*
@@ -61,5 +62,35 @@ class UsersController extends Controller
         }
 
         return redirect($user->slug)->with('message', 'Updated profile picture');
+    }
+
+    /*
+     * Post a new profile picture.
+     */
+    public function postVideo(Request $request)
+    {
+        $validator = \Validator::make($request->all(), [
+            'id'    => 'required|exists:users',
+            'url'   => 'int',
+        ]);
+
+        $user = Auth::user();
+
+        if ($validator->fails()) {
+            redirect($user->slug)->withErrors($validator);
+        }
+        if (!$user->id == $request->id) {
+            abort(403);
+        }
+
+        # Persist if uploaded succesfully
+        $user->resources()->save(Resource::create([
+            'type'          => 'video',
+            'url'           => $request->url,
+            'name'          => $request->name,
+            'description'   => $request->description,
+        ]));
+
+        return redirect($user->slug)->with('message', 'Added video');
     }
 }

@@ -14,23 +14,15 @@ class UsersTableSeeder extends Seeder
 	{
 		$faker = Faker::create();
 
-		$picture = App\Resource::create([
-			'name'      => 'My profile pic',
-			'url'       => 'test',
-			'type'      => 'image',
-			'mime'      => 'image/png',
-			'extension' => '.png',
-		]);
-
 		$video1 = App\Resource::create([
 			'name'      => 'My video',
-			'url'       => '//player.vimeo.com/video/166284984',
+			'url'       => '166284984',
 			'type'      => 'video',
 		]);
 
 		$video2 = App\Resource::create([
 			'name'      => 'My video',
-			'url'       => '//player.vimeo.com/video/131811521',
+			'url'       => '131811521',
 			'type'      => 'video',
 		]);
 
@@ -50,8 +42,6 @@ class UsersTableSeeder extends Seeder
 			'country'		=> 'Netherlands',
 		]);
 
-		$user->resource()->associate($picture)->save();
-		$picture->user()->associate($user)->save();
 		$video1->user()->associate($user)->save();
 		$video2->user()->associate($user)->save();
 	}
