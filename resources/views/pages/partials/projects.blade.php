@@ -26,7 +26,7 @@
 				@endforeach
 			@else
 				<div class="col-lg-8 col-lg-offset-2">
-					<p class="text-center">{{ $user->getName() }} doesn't have any video's to show yet.</p>
+					<p class="text-center">{{ $user->first_name }} doesn't have any video's to show yet.</p>
 				</div>
 			@endif
 		</div>
@@ -34,7 +34,7 @@
 
 	@if(Auth::check())
 		<div class="form-group">
-			<button class="btn btn-primary center-block" type="button" data-toggle="modal" data-target="#projectsModal">Edit</button>
+			<button class="btn btn-primary center-block" type="button" data-toggle="modal" data-target="#projectsModal">Add Video</button>
 		</div>
 	@endif
 </section>
@@ -66,7 +66,15 @@
 									</strong>
 								</li>
 							</ul>
-							<button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
+							<form class="form-horizontal" method="POST" action="{{ url('/users/video/' . $video->id) }}" enctype="multipart/form-data">
+								{!! csrf_field() !!}
+								{{ method_field('DELETE') }}
+
+								@if(Auth::check())
+									<button type="submit" class="btn btn-danger"><i class="fa fa-minus"></i> Delete</button>
+								@endif
+								<button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-close"></i> Close</button>
+							</form>
 						</div>
 					</div>
 				</div>

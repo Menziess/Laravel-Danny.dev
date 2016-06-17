@@ -18,50 +18,63 @@
 				</p>
 			</div>
 		</div>
+
+		@if(Auth::check())
+			<div class="form-group">
+				<button class="btn btn-primary center-block" type="button" data-toggle="modal" data-target="#aboutModal">Edit</button>
+			</div>
+		@endif
+
 	</div>
 </section>
 
 @section('footer')
-<!-- Footer -->
-<div class="footer-above">
-	<div class="container">
-		<div class="row">
-			<div class="footer-col col-md-4">
-			<h3>Location</h3>
-			@if($user->country || $user->street)
-				<p>{{ $user->street }} {{ $user->number }}
-				<br />{{ $user->city }}, {{ $user->zipcode }}
-				<br />{{ $user->country }}</p>
-			@else
-				<p>{{ $user->first_name }} hasn't shared a location yet.</p>
-			@endif
-			</div>
-			<div class="footer-col col-md-4">
-				<h3>Around the Web</h3>
-				<ul class="list-inline">
-					<li>
-						<a href="{{ $user->facebook }}" class="btn-social btn-outline {{ $user->facebook ?: 'disabled' }}"><i class="fa fa-fw fa-facebook"></i></a>
-					</li>
-					<li>
-						<a href="{{ $user->google }}" class="btn-social btn-outline {{ $user->google ?: 'disabled' }}"><i class="fa fa-fw fa-google-plus"></i></a>
-					</li>
-					<li>
-						<a href="{{ $user->twitter }}" class="btn-social btn-outline {{ $user->twitter ?: 'disabled' }}"><i class="fa fa-fw fa-twitter"></i></a>
-					</li>
-					<li>
-						<a href="{{ $user->linkedin }}" class="btn-social btn-outline {{ $user->linkedin ?: 'disabled' }}"><i class="fa fa-fw fa-linkedin"></i></a>
-					</li>
-					<li>
-						<a href="{{ $user->website }}" class="btn-social btn-outline {{ $user->website ?: 'disabled' }}"><i class="fa fa-fw fa-dribbble"></i></a>
-					</li>
-				</ul>
-			</div>
-			<div class="footer-col col-md-4">
-				<h3>Contact</h3>
-				<p>Email <a href="{{ url('mailto:' . $user->email) }}">{{ $user->email }}</a></p>
+	<div class="footer-above">
+		<div class="container">
+			<div class="row">
+				<div class="footer-col col-md-4">
+				<h3>Location</h3>
+				@if($user->country || $user->street)
+					<p>{{ $user->street }} {{ $user->number }}
+					<br />{{ $user->city }}, {{ $user->zipcode }}
+					<br />{{ $user->country }}</p>
+				@else
+					<p>{{ $user->first_name }} hasn't shared a location yet.</p>
+				@endif
+				</div>
+				<div class="footer-col col-md-4">
+					<h3>Around the Web</h3>
+					<ul class="list-inline">
+						@if($user->facebook)
+							<li><a href="{{ $user->facebook }}" class="btn-social btn-outline"><i class="fa fa-fw fa-facebook"></i></a></li>
+						@endif
+
+						@if($user->google)
+							<li><a href="{{ $user->google }}" class="btn-social btn-outline {{ $user->google ?: 'disabled' }}"><i class="fa fa-fw fa-google-plus"></i></a></li>
+						@endif
+
+						@if($user->twitter)
+							<li><a href="{{ $user->twitter }}" class="btn-social btn-outline {{ $user->twitter ?: 'disabled' }}"><i class="fa fa-fw fa-twitter"></i></a></li>
+						@endif
+
+						@if($user->linkedin)
+						<li>
+							<a href="{{ $user->linkedin }}" class="btn-social btn-outline {{ $user->linkedin ?: 'disabled' }}"><i class="fa fa-fw fa-linkedin"></i></a>
+						</li>
+						@endif
+						@if($user->website)
+						<li>
+							<a href="{{ $user->website }}" class="btn-social btn-outline {{ $user->website ?: 'disabled' }}"><i class="fa fa-fw fa-dribbble"></i></a>
+						</li>
+						@endif
+					</ul>
+				</div>
+				<div class="footer-col col-md-4">
+					<h3>Contact</h3>
+					<p>Email <a href="{{ url('mailto:' . $user->email) }}">{{ $user->email }}</a></p>
+				</div>
 			</div>
 		</div>
 	</div>
-</div>
 @endsection
 

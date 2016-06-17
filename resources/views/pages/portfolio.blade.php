@@ -16,9 +16,9 @@
 				<div class="intro-text">
 					<span class="name">{{ $user->getName() }}</span>
 					<hr class="star-light">
-					<span class="skills">
+					<p class="text-center">
 						{{ $user->getSpecialisations() }}
-					</span>
+					</p>
 				</div>
 
 				@if(Auth::check())

@@ -11,86 +11,130 @@ use App\Http\Requests;
 
 class UsersController extends Controller
 {
-	/*
+	/**
 	 * Get user portfolio.
+	 *
+	 * @return View
 	 */
-    public function portfolio($slug)
-    {
-    	$user = User::where('slug', $slug)->firstOrFail();
-        $videos = $user->videos()->take(6)->get();
-    	return view('pages.portfolio', compact('user', 'videos'));
-    }
+	public function portfolio($slug)
+	{
+		$user = User::where('slug', $slug)->firstOrFail();
+		$videos = $user->videos()->take(6)->get();
 
-    /*
-     * Get own user portfolio.
-     */
-    public function getIndex($id = null)
-    {
-    	$slug = Auth::user()->slug;
-    	return redirect($slug);
-    }
+		return view('pages.portfolio', compact('user', 'videos'));
+	}
 
-    /*
-     * Post a new profile picture.
-     */
-    public function postPicture(Request $request)
-    {
-        $validator = \Validator::make($request->all(), [
-            'id'    => 'required|exists:users',
-            'file'  => 'mimes:jpeg,jpg,png,gif|max:4000',
-        ]);
+	/**
+	 * Get own user portfolio.
+	 *
+	 * @return Redirect
+	 */
+	public function getIndex($id = null)
+	{
+		$slug = Auth::user()->slug;
 
-        $user = Auth::user();
+		return redirect($slug);
+	}
 
-        if ($validator->fails()) {
-            redirect($user->slug)->withErrors($validator);
-        }
-        if (!$user->id == $request->id) {
-            abort(403);
-        }
+	/**
+	 * Post a new profile picture.
+	 *
+	 * @return Redirect
+	 */
+	public function postPicture(Request $request)
+	{
+		$validator = \Validator::make($request->all(), [
+			'id'    => 'required|exists:users',
+			'file'  => 'mimes:jpeg,jpg,png,gif|max:4000',
+		]);
 
-        $resource = new Resource;
-        $filepath = $resource->uploadImageFile($request->file('file'));
+		$user = Auth::user();
 
-        # Persist if uploaded succesfully
-        if (\Storage::exists($filepath)) {
-            if ($user->resource) {
-                $user->resource->removeFromStorage();
-            }
-            $resource->user()->associate($user)->save();
-            $user->resource()->associate($resource)->save();
-        }
+		if ($validator->fails()) {
+			return redirect($user->slug)->withErrors($validator);
+		}
+		if (!$user->id == $request->id) {
+			abort(403);
+		}
 
-        return redirect($user->slug)->with('message', 'Updated profile picture');
-    }
+		$resource = new Resource;
+		$filepath = $resource->uploadImageFile($request->file('file'));
 
-    /*
-     * Post a new profile picture.
-     */
-    public function postVideo(Request $request)
-    {
-        $validator = \Validator::make($request->all(), [
-            'id'    => 'required|exists:users',
-            'url'   => 'int',
-        ]);
+		# Persist if uploaded succesfully
+		if (\Storage::exists($filepath)) {
+			if ($user->resource) {
+				$user->resource->removeFromStorage();
+			}
+			$resource->user()->associate($user)->save();
+			$user->resource()->associate($resource)->save();
+		}
 
-        $user = Auth::user();
+		return redirect($user->slug)->with('message', 'Updated profile picture');
+	}
 
-        if ($validator->fails()) {
-            redirect($user->slug)->withErrors($validator);
-        }
-        if (!$user->id == $request->id) {
-            abort(403);
-        }
+	public function postAbout(Request $request)
+	{
+		$validator = \Validator::make($request->all(), [
+			'id'    => 'required|exists:users',
+			'about' => 'required|string',
+		]);
 
-        # Persist if uploaded succesfully
-        $user->resources()->save(Resource::create([
-            'type'          => 'video',
-            'url'           => $request->url,
-            'name'          => $request->name,
-            'description'   => $request->description,
-        ]));
+		$user = Auth::user();
 
-        return redirect($user->slug)->with('message', 'Added video');
-    }
+		if ($validator->fails()) {
+			return redirect($user->slug)->withErrors($validator);
+		}
+		if (!$user->id == $request->id) {
+			abort(403);
+		}
+
+		$user->about = $request->about;
+		$user->save();
+
+		return redirect($user->slug)->with('message', 'About updated');
+	}
+
+	/**
+	 * Post a new video.
+	 *
+	 * @return Redirect
+	 */
+	public function postVideo(Request $request)
+	{
+		$validator = \Validator::make($request->all(), [
+			'id'    => 'required|exists:users',
+			'url'   => 'required|integer',
+		]);
+
+		$user = Auth::user();
+
+		if ($validator->fails()) {
+			return redirect($user->slug)->withErrors($validator);
+		}
+		if (!$user->id == $request->id) {
+			abort(403);
+		}
+
+		# Persist if uploaded succesfully
+		$user->resources()->save(Resource::create([
+			'type'          => 'video',
+			'url'           => $request->url,
+			'name'          => $request->name,
+			'description'   => $request->description,
+		]));
+
+		return redirect($user->slug)->with('message', 'Added video');
+	}
+
+	/**
+	 * Remove video by id.
+	 *
+	 * @return Redirect
+	 */
+	public function deleteVideo($id)
+	{
+		$video = Resource::findOrFail($id)->delete();
+
+		return redirect()->back()->with('message', 'Video deleted');
+	}
 }
