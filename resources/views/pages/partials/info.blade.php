@@ -50,22 +50,19 @@
 						@endif
 
 						@if($user->google)
-							<li><a href="{{ $user->google }}" class="btn-social btn-outline {{ $user->google ?: 'disabled' }}"><i class="fa fa-fw fa-google-plus"></i></a></li>
+							<li><a href="{{ $user->google }}" class="btn-social btn-outline"><i class="fa fa-fw fa-google-plus"></i></a></li>
 						@endif
 
 						@if($user->twitter)
-							<li><a href="{{ $user->twitter }}" class="btn-social btn-outline {{ $user->twitter ?: 'disabled' }}"><i class="fa fa-fw fa-twitter"></i></a></li>
+							<li><a href="{{ $user->twitter }}" class="btn-social btn-outline"><i class="fa fa-fw fa-twitter"></i></a></li>
 						@endif
 
 						@if($user->linkedin)
-						<li>
-							<a href="{{ $user->linkedin }}" class="btn-social btn-outline {{ $user->linkedin ?: 'disabled' }}"><i class="fa fa-fw fa-linkedin"></i></a>
-						</li>
+							<li><a href="{{ $user->linkedin }}" class="btn-social btn-outline"><i class="fa fa-fw fa-linkedin"></i></a></li>
 						@endif
+
 						@if($user->website)
-						<li>
-							<a href="{{ $user->website }}" class="btn-social btn-outline {{ $user->website ?: 'disabled' }}"><i class="fa fa-fw fa-dribbble"></i></a>
-						</li>
+							<li><a href="{{ $user->website }}" class="btn-social btn-outline"><i class="fa fa-fw fa-dribbble"></i></a></li>
 						@endif
 					</ul>
 				</div>
