@@ -1,3 +1,4 @@
+
 <!-- Portfolio Grid Section -->
 <section id="portfolio">
 	<div class="container">
@@ -12,7 +13,7 @@
 			@if($user->videos()->count() > 0)
 				@foreach($user->videos()->get() as $video)
 				<div class="col-sm-4 portfolio-item">
-					<a href="#portfolioModal{{ $video->id }}" class="portfolio-link" data-toggle="modal">
+					<a href="#videoModal{{ $video->id }}" class="portfolio-link" data-toggle="modal">
 						<div class="embed-responsive embed-responsive-16by9">
 							<iframe class="embed-responsive-item" src="//player.vimeo.com/video/{{ $video->url }}" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 						</div>
@@ -34,7 +35,7 @@
 
 	@if(Auth::check())
 		<div class="form-group">
-			<button class="btn btn-primary center-block" type="button" data-toggle="modal" data-target="#projectsModal">Add Video</button>
+			<button class="btn btn-primary center-block" type="button" data-toggle="modal" data-target="#videoModal">Add Video</button>
 		</div>
 	@endif
 </section>
@@ -42,7 +43,7 @@
 <!-- Portfolio Modals -->
 @if($videos)
 	@foreach($videos as $video)
-	<div class="portfolio-modal modal fade" id="portfolioModal{{ $video->id }}" tabindex="-1" role="dialog" aria-hidden="true">
+	<div class="portfolio-modal modal fade" id="videoModal{{ $video->id }}" tabindex="-1" role="dialog" aria-hidden="true">
 		<div class="modal-content">
 			<div class="close-modal" data-dismiss="modal">
 				<div class="lr">

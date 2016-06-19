@@ -45,13 +45,13 @@ class UsersController extends Controller
 	{
 		$validator = \Validator::make($request->all(), [
 			'id'    => 'required|exists:users',
-			'file'  => 'mimes:jpeg,jpg,png,gif|max:4000',
+			'file'  => 'required|mimes:jpeg,jpg,png,gif|max:4000',
 		]);
 
 		$user = Auth::user();
 
 		if ($validator->fails()) {
-			return redirect($user->slug)->withErrors($validator);
+			return redirect($user->slug . '#pictureModal')->withErrors($validator);
 		}
 		if (!$user->id == $request->id) {
 			abort(403);
@@ -69,7 +69,7 @@ class UsersController extends Controller
 			$user->resource()->associate($resource)->save();
 		}
 
-		return redirect($user->slug)->with('message', 'Updated profile picture');
+		return redirect($user->slug);
 	}
 
 	public function postAbout(Request $request)
@@ -82,7 +82,7 @@ class UsersController extends Controller
 		$user = Auth::user();
 
 		if ($validator->fails()) {
-			return redirect($user->slug)->withErrors($validator);
+			return redirect($user->slug . '#aboutModal')->withErrors($validator);
 		}
 		if (!$user->id == $request->id) {
 			abort(403);
@@ -91,7 +91,7 @@ class UsersController extends Controller
 		$user->about = $request->about;
 		$user->save();
 
-		return redirect($user->slug)->with('message', 'About updated');
+		return redirect($user->slug);
 	}
 
 	/**
@@ -109,7 +109,7 @@ class UsersController extends Controller
 		$user = Auth::user();
 
 		if ($validator->fails()) {
-			return redirect($user->slug)->withErrors($validator);
+			return redirect($user->slug . '#videoModal')->withErrors($validator);
 		}
 		if (!$user->id == $request->id) {
 			abort(403);
@@ -123,7 +123,7 @@ class UsersController extends Controller
 			'description'   => $request->description,
 		]));
 
-		return redirect($user->slug)->with('message', 'Added video');
+		return redirect($user->slug);
 	}
 
 	/**

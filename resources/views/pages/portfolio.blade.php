@@ -2,6 +2,7 @@
 
 @section('header')
 	<div class="container">
+
 		<div class="row">
 			<div class="col-lg-12">
 
@@ -34,7 +35,7 @@
 
 @section('content')
 
-	@include('pages.partials.projects')
+	@include('pages.partials.videos')
 
 	@include('pages.partials.info')
 

@@ -22,7 +22,7 @@ class PagesController extends Controller
 		if ($request->search) {
 			$videos = \App\Resource::search($request->search)->whereType('video')->take(20)->get();
 			$users 	= \App\User::search($request->search)->take(20)->get();
-			return view('pages.results', compact('links', 'videos', 'users'));
+			return view('results', compact('links', 'videos', 'users'));
 		}
 		$background	= \App\Resource::whereType('video')->orderByRaw('RAND()')->first();
 		return view('welcome', compact('links', 'background'));
