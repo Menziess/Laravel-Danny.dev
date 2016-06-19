@@ -69,7 +69,7 @@ class UsersController extends Controller
 			$user->resource()->associate($resource)->save();
 		}
 
-		return redirect($user->slug);
+		return redirect($user->slug)->with('pictureUploaded', 'Picture uploaded');;
 	}
 
 	public function postAbout(Request $request)
@@ -91,7 +91,7 @@ class UsersController extends Controller
 		$user->about = $request->about;
 		$user->save();
 
-		return redirect($user->slug);
+		return redirect($user->slug . '#about')->with('aboutUpdated', 'About updated');;
 	}
 
 	/**
@@ -123,7 +123,7 @@ class UsersController extends Controller
 			'description'   => $request->description,
 		]));
 
-		return redirect($user->slug);
+		return redirect($user->slug . '#portfolio')->with('videoAdded', 'Video added');;
 	}
 
 	/**
@@ -131,10 +131,10 @@ class UsersController extends Controller
 	 *
 	 * @return Redirect
 	 */
-	public function deleteVideo($id)
+	public function deleteVideo($id, Request $request)
 	{
 		$video = Resource::findOrFail($id)->delete();
 
-		return redirect()->back()->with('message', 'Video deleted');
+		return redirect(\URL::previous() . '#portfolio')->with('videoDeleted', 'Video deleted');
 	}
 }

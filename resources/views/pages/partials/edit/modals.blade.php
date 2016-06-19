@@ -34,6 +34,7 @@
 								<strong>{{ $errors->first('file') }}</strong>
 							</span>
 						@endif
+
 						<button id="save" type="submit" class="btn btn-primary" name="submit" form="form-picture">Save</button>
 					</div>
 				</div>
@@ -89,7 +90,7 @@
 								<div class="form-group{{ $errors->has('video') ? ' has-error' : '' }} col-xs-12 floating-label-form-group controls">
 									<p id="video-feedback">Paste a valid vimeo url</p>
 									<label for="url">Vimeo url</label>
-									<input id="url" type="text" class="form-control" name="url" value="{{ old('video') }}" maxlength="30"
+									<input id="url" type="text" class="form-control" name="url" value="{{ old('video') }}" maxlength="30" autofocus
 										placeholder="https://vimeo.com/131811521" required data-validation-required-message="Please enter a vimeo id.">
 									<p class="help-block text-danger"></p>
 								</div>
@@ -100,6 +101,7 @@
 								<strong>{{ $errors->first('url') }}</strong>
 							</span>
 						@endif
+
 						<button type="submit" class="btn btn-primary" name="submit" form="form-video"><i class="fa fa-check"></i> Add</button>
 						<button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-close"></i> Close</button>
 					</div>
@@ -171,13 +173,15 @@
 								</div>
 							</div>
 						</form>
-						@if ($errors->has('email'))
+						@if ($errors->has('about'))
 							<span class="help-block">
 								<strong>{{ $errors->first('about') }}</strong>
 							</span>
 						@endif
-						<button type="submit" class="btn btn-primary" name="submit" form="form-about"><i class="fa fa-check"></i> Add</button>
-						<button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-close"></i> Close</button>
+						<div class="p-t-3">
+							<button type="submit" class="btn btn-primary" name="submit" form="form-about"><i class="fa fa-check"></i> Add</button>
+							<button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-close"></i> Close</button>
+						</div>
 					</div>
 				</div>
 			</div>

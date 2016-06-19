@@ -19,13 +19,21 @@
 			</div>
 		</div>
 
-		@if(Auth::check())
-			<div class="form-group">
-				<button class="btn btn-primary center-block" type="button" data-toggle="modal" data-target="#aboutModal">Edit</button>
-			</div>
-		@endif
-
+		<div class="col-md-4 col-md-offset-4">
+			@if (Session::has('aboutUpdated'))
+				<div class="alert alert-info" role="alert">
+					{{ Session::get('aboutUpdated') }}
+				</div>
+			@endif
+		</div>
 	</div>
+
+	@if(Auth::check())
+		<div class="form-group">
+			<button class="btn btn-primary center-block" type="button" data-toggle="modal" data-target="#aboutModal">Edit</button>
+		</div>
+	@endif
+
 </section>
 
 @section('footer')
@@ -69,6 +77,14 @@
 				<div class="footer-col col-md-4">
 					<h3>Contact</h3>
 					<p>Email <a href="{{ url('mailto:' . $user->email) }}">{{ $user->email }}</a></p>
+				</div>
+
+				<div class="col-md-4 col-md-offset-4">
+					@if (Session::has('infoUpdated'))
+						<div class="alert alert-info" role="alert">
+							{{ Session::get('infoUpdated') }}
+						</div>
+					@endif
 				</div>
 			</div>
 		</div>

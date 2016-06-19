@@ -31,6 +31,18 @@
 				</div>
 			@endif
 		</div>
+		<div class="col-md-4 col-md-offset-4">
+			@if (Session::has('videoAdded'))
+				<div class="alert alert-info" role="alert">
+					{{ Session::get('videoAdded') }}
+				</div>
+			@endif
+			@if (Session::has('videoDeleted'))
+				<div class="alert alert-info" role="alert">
+					{{ Session::get('videoDeleted') }}
+				</div>
+			@endif
+		</div>
 	</div>
 
 	@if(Auth::check())
