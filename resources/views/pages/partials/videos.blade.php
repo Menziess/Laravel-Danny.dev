@@ -95,25 +95,4 @@
 		</div>
 	</div>
 	@endforeach
-
-	@push('scripts')
-		<script src="{{ asset('js/jquery.vimeo.api.js') }}"></script>
-		<script type="text/javascript">
-			$(document).ready(function($) {
-			   // $("#player").vimeo("play").on("play", function(e){
-						// 	  console.log("play event was triggered");
-						//   })
-						//   .on("pause", function(e){
-						// 	  console.log("pause event was triggered");
-						//   })
-						//   .on("playProgress", function(event, data){
-						// 	  console.log(data);
-						//   })
-						//   .on("finish", function(e){
-						// 	  vid.vimeo("unload");
-						// 	  console.log("Finished event triggere");
-						//   });
-			});
-		</script>
-	@endpush
 @endif

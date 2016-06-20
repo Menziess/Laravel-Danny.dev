@@ -57,19 +57,25 @@ class Resource extends Model
 		'deleted_at',
 	];
 
-	# Define relation
+	/*
+	 * Relation with user.
+	 */
 	public function user()
 	{
 		return $this->belongsTo(User::class);
 	}
 
-	# Scope where type is
+	/*
+	 * Scope where type is.
+	 */
 	public function scopeWhereType($query, string $type)
 	{
 		return $query->where('type', $type);
 	}
 
-	# Scope where name or description is like
+	/*
+	 * Scope search for name or description.
+	 */
 	public function scopeSearch($query, string $search = null)
 	{
 		if (!$search) {
@@ -89,7 +95,7 @@ class Resource extends Model
 	 */
 	public function uploadImageFile($file, $width = 256, $height = 256, $name = null)
 	{
-		$image = Image::make($file)->fit($width, $height, function ($constraint) {
+		$image = Image::make($file)->orientate()->fit($width, $height, function ($constraint) {
             $constraint->aspectRatio();
         });
 
@@ -111,7 +117,7 @@ class Resource extends Model
 	 */
 	public function uploadImagePath($path, $width = 256, $height = 256, $name = null)
 	{
-		$image = Image::make($path)->resize($width, $height);
+		$image = Image::make($path)->orientate()->resize($width, $height);
 
 		$this->name = $name;
 		$this->url = self::generateName();

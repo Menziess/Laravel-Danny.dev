@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use Auth;
+use App\Role;
 use App\User;
 use App\Resource;
 use App\Http\Requests;
@@ -20,8 +21,9 @@ class UsersController extends Controller
 	{
 		$user = User::where('slug', $slug)->firstOrFail();
 		$videos = $user->videos()->take(6)->get();
+		$types = Role::all();
 
-		return view('pages.portfolio', compact('user', 'videos'));
+		return view('pages.portfolio', compact('user', 'videos', 'types'));
 	}
 
 	/**

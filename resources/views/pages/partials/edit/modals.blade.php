@@ -64,6 +64,50 @@
 @endpush
 
 <!-- Specialisations modal -->
+<div class="portfolio-modal modal fade" id="specializationsModal" tabindex="-1" role="dialog" aria-hidden="true">
+	<div class="modal-content">
+		<div class="close-modal" data-dismiss="modal">
+			<div class="lr">
+				<div class="rl">
+				</div>
+			</div>
+		</div>
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-10 col-lg-offset-1">
+					<div class="modal-body">
+						<h2>Edit specializations</h2>
+						<hr class="star-primary">
+
+						<div class="form-group col-md-4 col-md-offset-4">
+							<p id="specializations-feedback">You can have 5 specializations</p>
+							<ul>
+								@foreach($user->roles as $role)
+								<li>{{ $role->name }}</li>
+								@endforeach
+								<li>example</li>
+							</ul>
+
+							<select class="form-control form-control-select" name="type" form="form-specializations">
+								@foreach($types as $type)
+									<option value="{{ $type }}">{{ $type->name }}</option>
+								@endforeach
+							</select>
+						</div>
+
+						@if ($errors->has('specialization'))
+							<span class="help-block">
+								<strong>{{ $errors->first('specialization') }}</strong>
+							</span>
+						@endif
+					</div>
+				</div>
+			</div>
+			<button type="submit" class="btn btn-primary" name="submit" form="form-about"><i class="fa fa-check"></i> Add</button>
+			<button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-close"></i> Close</button>
+		</div>
+	</div>
+</div>
 
 <!-- Video modal -->
 <div class="portfolio-modal modal fade" id="videoModal" tabindex="-1" role="dialog" aria-hidden="true">
@@ -102,9 +146,9 @@
 							</span>
 						@endif
 
-						<button type="submit" class="btn btn-primary" name="submit" form="form-video"><i class="fa fa-check"></i> Add</button>
-						<button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-close"></i> Close</button>
 					</div>
+					<button type="submit" class="btn btn-primary" name="submit" form="form-video"><i class="fa fa-check"></i> Add</button>
+					<button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-close"></i> Close</button>
 				</div>
 			</div>
 		</div>
@@ -178,13 +222,11 @@
 								<strong>{{ $errors->first('about') }}</strong>
 							</span>
 						@endif
-						<div class="p-t-3">
-							<button type="submit" class="btn btn-primary" name="submit" form="form-about"><i class="fa fa-check"></i> Add</button>
-							<button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-close"></i> Close</button>
-						</div>
 					</div>
 				</div>
 			</div>
+			<button type="submit" class="btn btn-primary" name="submit" form="form-about"><i class="fa fa-check"></i> Add</button>
+			<button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-close"></i> Close</button>
 		</div>
 	</div>
 </div>
