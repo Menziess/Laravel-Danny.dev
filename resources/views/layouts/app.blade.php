@@ -21,7 +21,7 @@
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/startbootstrap-freelancer/1.0.5/css/freelancer.min.css" rel="stylesheet" type="text/css">
 
 	<!-- Custom Fonts -->
-	<link href="{{ asset('font-awesome/css/font-awesome.min.css') }}" rel="stylesheet" type="text/css">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 	<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700">
 
@@ -61,10 +61,10 @@
 	@include('layouts.footer')
 
 	<!-- jQuery -->
-	<script src="{{ asset('js/jquery.js') }}"></script>
+	<script src="https://code.jquery.com/jquery-1.11.1.min.js" integrity="sha256-VAvG3sHdS5LqTT+5A/aeq/bZGa/Uj04xKxY8KM/w9EE=" crossorigin="anonymous"></script>
 
 	<!-- Bootstrap Core JavaScript -->
-	<script src="{{ asset('js/bootstrap.min.js') }}"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.min.js"></script>
 
 	<!-- Plugin JavaScript -->
 	<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
