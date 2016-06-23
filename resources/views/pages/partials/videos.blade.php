@@ -11,12 +11,13 @@
 		<div class="row">
 
 			@if($user->videos()->count() > 0)
-				@foreach($user->videos()->get() as $video)
+				@foreach($videos as $video)
 				<div class="col-sm-4 portfolio-item">
 					<a href="#videoModal{{ $video->id }}" class="portfolio-link" data-toggle="modal">
-						<div class="embed-responsive embed-responsive-16by9">
-							<iframe class="embed-responsive-item" src="//player.vimeo.com/video/{{ $video->url }}" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-						</div>
+
+						<img src="{{ url('https://i.vimeocdn.com/video/' . $video->url . '_900x650.webp') }}"
+							class="img-responsive" width="900" height="650" alt>
+
 						<div class="caption">
 							<div class="caption-content">
 								<i class="fa fa-search-plus fa-3x"></i>

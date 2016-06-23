@@ -6,7 +6,7 @@
 		<div class="row">
 			<div class="col-lg-12">
 
-				<img class="img-circle profile-picture-small" src="{{ $user->getPicture() }}" alt="">
+				<img class="img-circle profile-picture-small" width="256" height="256" src="{{ $user->getPicture() }}" alt="">
 
 				<div class="col-md-4 col-md-offset-4">
 					@if (Session::has('pictureUploaded'))

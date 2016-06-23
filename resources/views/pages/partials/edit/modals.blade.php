@@ -134,7 +134,7 @@
 								<div class="form-group{{ $errors->has('video') ? ' has-error' : '' }} col-xs-12 floating-label-form-group controls">
 									<p id="video-feedback">Paste a valid vimeo url</p>
 									<label for="url">Vimeo url</label>
-									<input id="url" type="text" class="form-control" name="url" value="{{ old('video') }}" maxlength="30" autofocus
+									<input id="url" type="text" class="form-control" name="url" value="{{ old('video') }}" maxlength="50" autofocus
 										placeholder="https://vimeo.com/131811521" required data-validation-required-message="Please enter a vimeo id.">
 									<p class="help-block text-danger"></p>
 								</div>
