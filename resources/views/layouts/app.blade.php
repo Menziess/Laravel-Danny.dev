@@ -8,13 +8,16 @@
 	<meta name="description" content="">
 	<meta name="author" content="">
 
+	<link rel="apple-touch-icon" href="{{ asset('img/logo.jpg') }}">
 	<meta name="mobile-web-app-capable" content="yes">
 	<meta name="apple-mobile-web-app-capable" content="yes">
 	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
 	<title>Danny</title>
 
-	<!-- Bootstrap Core CSS - Uses Bootswatch Flatly Theme: http://bootswatch.com/flatly/ -->
+	<link rel="shortcut icon" href="{{{ asset('favicon.ico') }}}">
+	<link rel="stylesheet" href="{{ asset('css/styles.css') }}">
+	<link rel="manifest" href="{{ asset('manifest.json') }}">
 	<link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
 
 	<!-- Custom CSS -->
@@ -25,8 +28,6 @@
 	<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700">
 
-	<link rel="stylesheet" href="{{ asset('css/styles.css') }}">
-	<link rel="manifest" href="{{ asset('manifest.json') }}">
 
 	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -38,9 +39,6 @@
 	<style>
 		body {
 			font-family: 'Lato';
-		}
-		.fa-btn {
-			margin-right: 6px;
 		}
 	</style>
 </head>
@@ -80,6 +78,9 @@
 
 	<!-- Other scripts -->
 	@stack('scripts')
+	<script type="text/javascript">
+		(function(a,b,c){if(c in b&&b[c]){var d,e=a.location,f=/^(a|html)$/i;a.addEventListener("click",function(a){d=a.target;while(!f.test(d.nodeName))d=d.parentNode;"href"in d&&(chref=d.href).replace(e.href,"").indexOf("#")&&(!/^[a-z\+\.\-]+:/i.test(chref)||chref.indexOf(e.protocol+"//"+e.host)===0)&&(a.preventDefault(),e.href=d.href)},!1)}})(document,window.navigator,"standalone");
+	</script>
 
 </body>
 </html>

@@ -26,8 +26,6 @@
 									</label>
 								</div>
 							</div>
-							<div class="modal-footer">
-							</div>
 						</form>
 						@if ($errors->has('file'))
 							<span class="help-block">
