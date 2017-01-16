@@ -13,12 +13,12 @@
 	<meta name="apple-mobile-web-app-capable" content="yes">
 	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
-	<title>Danny</title>
+	<title>Filmproduction</title>
 
 	<link rel="shortcut icon" href="{{{ asset('favicon.ico') }}}">
+	<link rel="manifest"   href="{{ asset('manifest.json') }}">
 	<link rel="stylesheet" href="{{ asset('css/styles.css') }}">
-	<link rel="manifest" href="{{ asset('manifest.json') }}">
-	<link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
+	<link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
 
 	<!-- Custom CSS -->
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/startbootstrap-freelancer/1.0.5/css/freelancer.min.css" rel="stylesheet" type="text/css">
@@ -27,14 +27,6 @@
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 	<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700">
-
-
-	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-	<!--[if lt IE 9]>
-		<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-		<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-	<![endif]-->
 
 	<style>
 		body {
@@ -70,8 +62,8 @@
 	<script src="{{ asset('js/cbpAnimatedHeader.js') }}"></script>
 
 	<!-- Contact Form JavaScript -->
-	<!-- <script src="{{ asset('js/jqBootstrapValidation.js') }}"></script> -->
-	<!-- <script src="{{ asset('js/contact_me.js') }}"></script> -->
+	{{-- <!-- <script src="{{ asset('js/jqBootstrapValidation.js') }}"></script> --> --}}
+	{{-- <!-- <script src="{{ asset('js/contact_me.js') }}"></script> --> --}}
 
 	<!-- Custom Theme JavaScript -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/startbootstrap-freelancer/1.0.5/js/freelancer.min.js"></script>

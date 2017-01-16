@@ -54,29 +54,29 @@
 					<h3>Around the Web</h3>
 					<ul class="list-inline">
 						@if($user->facebook)
-							<li><a href="{{ $user->facebook }}" class="btn-social btn-outline"><i class="fa fa-fw fa-facebook"></i></a></li>
+							<li><a href="{{ $user->facebook }}" class="btn-social btn-outline" target="blank"><i class="fa fa-fw fa-facebook"></i></a></li>
 						@endif
 
 						@if($user->google)
-							<li><a href="{{ $user->google }}" class="btn-social btn-outline"><i class="fa fa-fw fa-google-plus"></i></a></li>
+							<li><a href="{{ $user->google }}" class="btn-social btn-outline" target="blank"><i class="fa fa-fw fa-google-plus"></i></a></li>
 						@endif
 
 						@if($user->twitter)
-							<li><a href="{{ $user->twitter }}" class="btn-social btn-outline"><i class="fa fa-fw fa-twitter"></i></a></li>
+							<li><a href="{{ $user->twitter }}" class="btn-social btn-outline" target="blank"><i class="fa fa-fw fa-twitter"></i></a></li>
 						@endif
 
 						@if($user->linkedin)
-							<li><a href="{{ $user->linkedin }}" class="btn-social btn-outline"><i class="fa fa-fw fa-linkedin"></i></a></li>
+							<li><a href="{{ $user->linkedin }}" class="btn-social btn-outline" target="blank"><i class="fa fa-fw fa-linkedin"></i></a></li>
 						@endif
 
 						@if($user->website)
-							<li><a href="{{ $user->website }}" class="btn-social btn-outline"><i class="fa fa-fw fa-dribbble"></i></a></li>
+							<li><a href="{{ $user->website }}" class="btn-social btn-outline" target="blank"><i class="fa fa-fw fa-dribbble"></i></a></li>
 						@endif
 					</ul>
 				</div>
 				<div class="footer-col col-md-4">
 					<h3>Contact</h3>
-					<p>Email <a href="{{ url('mailto:' . $user->email) }}">{{ $user->email }}</a></p>
+					<p>Email <a href="{{ url('mailto:' . $user->email) }}" target="_top">{{ $user->email }}</a></p>
 				</div>
 
 				<div class="col-md-4 col-md-offset-4">

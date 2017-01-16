@@ -4,7 +4,7 @@
 
 <section id="register">
 	<div class="container">
-		<div class="row">
+		<div class="row p-t-3">
 			<div class="col-lg-12 text-center">
 				<h2>Register</h2>
 				<hr class="star-primary">

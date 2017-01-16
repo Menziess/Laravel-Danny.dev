@@ -11,6 +11,9 @@
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</button>
+			<a href="{{ url('/') }}">
+				<img class="pull-left star" src="{{ asset('img/star.png') }}" width="50" height="50"/>
+			</a>
 			<a class="navbar-brand" href="{{ isset($user) ? url('/' . $user->slug) : url('/') }}">{{ isset($user) ? $user->first_name : 'Portfolio' }}</a>
 		</div>
 
@@ -18,25 +21,11 @@
 		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 			<!-- Right Side Of Navbar -->
 			<ul class="nav navbar-nav navbar-right">
-				<!-- Regular links -->
-				<!-- <li class="hidden">
-					<a href="#page-top"></a>
-				</li>
-				<li class="page-scroll">
-					<a href="#portfolio">Portfolio</a>
-				</li>
-				<li class="page-scroll">
-					<a href="#about">About</a>
-				</li>
-				<li class="page-scroll">
-					<a href="#contact">Contact</a>
-				</li> -->
-				<!-- Logout button visible when logged in -->
+
 				@if (Auth::user())
 					<li><a href="{{ url('/logout') }}">Logout</a></li>
 					<li><a href="{{ url('/users') }}">{{ Auth::user()->first_name }}</a></li>
 				@endif
-				<!-- Register and login buttons visible on homepage -->
 				@if(isset($links))
 					@foreach($links as $link)
 						<li><a href="{{ url($link[1]) }}">{{ $link[0] }}</a></li>

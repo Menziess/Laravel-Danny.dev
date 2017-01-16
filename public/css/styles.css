@@ -4,6 +4,33 @@
 	overflow-x:hidden;
 }
 
+.container {
+	/*background-color: red;*/
+}
+
+.star {
+	margin-right: 1em;
+	transform: translateY(5px);
+}
+
+.star:hover {
+	opacity: 0.9;
+	cursor: pointer;
+}
+
+/* Margins */
+.m-t-3 {
+	margin-top: 3em;
+}
+
+.m-t-6 {
+    margin-top: 6em;
+}
+
+.m-t-9 {
+    margin-top: 9em;
+}
+
 /* Paddings */
 .p-t-3 {
 	padding-top: 3em;

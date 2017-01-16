@@ -5,17 +5,17 @@
 
 		@include('pages.partials.background', ['background' => $background])
 
-		<div class="row p-t-3">
+		<div class="row">
 			<div class="col-lg-12">
 				<div class="intro-text text-shadow">
-					<span class="name text">Great people</span>
-					<!-- <hr class="star-light"> -->
+					<span class="name text">Search</span>
+					<hr class="star-light">
 				</div>
 			</div>
 			<div class="col-lg-6 col-lg-offset-3">
 				<form class="form" role="search">
 					<div class="input-group">
-						<input type="text" class="form-control input-large box-shadow" placeholder="Search for great people" name="search" id="search">
+						<input type="text" class="form-control input-large box-shadow" placeholder="Search for crew members" name="search" id="search">
 						<div class="input-group-btn">
 							<button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
 						</div>
