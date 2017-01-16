@@ -10,11 +10,17 @@
     RewriteRule ^(.*)/$ /$1 [L,R=301]
 
     # Handle Front Controller...
+    RewriteCond %{REQUEST_URI} !(\.css|\.js|\.png|\.jpg|\.gif|robots\.txt)$ [NC]
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteRule ^ index.php [L]
 
+    # Redirect to www version
+    RewriteCond %{HTTP_HOST} ^filmproduction.ml [NC]
+    RewriteRule ^(.*)$ http://www.filmproduction.ml/$1 [L,R=301]
+
     # Handle Authorization Header
     RewriteCond %{HTTP:Authorization} .
     RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+
 </IfModule>
